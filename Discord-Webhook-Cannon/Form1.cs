@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text;
 
 namespace Discord_Webhook_Cannon
 {
     public partial class Form1 : Form
     {
 
-        int mov, movX = MousePosition.X, movY = MousePosition.Y;
+        int MouPosX = 0, MouPosY = 0;
+        bool mouseDown = false;
 
         public Form1()
         {
@@ -41,22 +43,22 @@ namespace Discord_Webhook_Cannon
 
         private void panel_MouseDown(object sender, MouseEventArgs e)
         {
-            mov = 1;
-            movX = e.X;
-            movY = e.Y;
+            mouseDown = true;
+            MouPosX = e.X;
+            MouPosY = e.Y;
         }
 
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mov == 1)
+            if(mouseDown)
             {
-                this.SetDesktopLocation(MousePosition.X, MousePosition.Y);
+                this.SetDesktopLocation(MousePosition.X - MouPosX, MousePosition.Y - MouPosY);
             }
         }
 
         private void panel_MouseUp(object sender, MouseEventArgs e)
         {
-            mov = 0;
+            mouseDown = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
