@@ -79,6 +79,24 @@ namespace Discord_Webhook_Cannon
             textBox2.Text = ofd.FileName;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string webhook = textBox1.Text;
+            string proxyList = textBox2.Text;
+            string threads = trackBar1.Value.ToString();
+            string message = messageTxtBox.Text;
+
+            if (string.IsNullOrEmpty(webhook) || string.IsNullOrEmpty(proxyList) || string.IsNullOrEmpty(message))
+            {
+                MessageBox.Show("Invalid options", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Cannon cannon = new Cannon();
+                cannon.StartThreads(webhook, proxyList, threads, message);
+            }
+        }
+
         private void AppExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
