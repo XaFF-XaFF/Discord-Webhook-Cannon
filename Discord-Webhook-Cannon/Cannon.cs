@@ -9,6 +9,8 @@ using System.IO;
 using System.Net;
 using System.Collections.Specialized;
 using System.Net.NetworkInformation;
+using System.Diagnostics;
+using System.Net.Sockets;
 
 namespace Discord_Webhook_Cannon
 {
@@ -32,17 +34,24 @@ namespace Discord_Webhook_Cannon
             dWebClient = new WebClient();
             discord.Add("content", message);
             int i = 0;
+
+            string proxyUsername = "";
+            string proxyPassword = "";
+
             foreach (string line in File.ReadAllLines(proxylist))
             {
                 i++;
-                Console.WriteLine("Req nr: " + i);
+                Console.WriteLine("Req nr: " + i + " " + line);
                 WebProxy proxy1 = new WebProxy("http://" + line);
 
                 try
                 {
-                    dWebClient.Proxy = proxy1;
-                    dWebClient.UploadValues(webhook, discord);
-                    Thread.Sleep(500);
+                    for (int j = 1; j <= 30; j++)
+                    {
+                        proxy1.Credentials = new NetworkCredential(proxyUsername, proxyPassword);
+                        dWebClient.Proxy = proxy1;
+                        dWebClient.UploadValues(webhook, discord);
+                    }
                 }
                 catch (Exception ex)
                 {
