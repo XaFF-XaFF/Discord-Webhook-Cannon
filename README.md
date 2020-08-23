@@ -1,5 +1,5 @@
 # Discord-Webhook-Cannon
-Discord Webhook Cannon is C# a multithreaded open source Discord Webhook flooder. It can be used to flood webhooks which are used in malware. 
+Discord Webhook Cannon is a C# multithreaded, open source Discord Webhook flooder. It can be used to flood webhooks which are used in malware. 
 
 # Options
 * You can choose Webhook which you want to flood.
