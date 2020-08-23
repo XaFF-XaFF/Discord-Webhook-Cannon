@@ -5,7 +5,7 @@ Discord Webhook Cannon is a C# multithreaded, open source Discord Webhook floode
 * You can choose Webhook which you want to flood.
 * You can choose how many threads are going to flood.
 * You can choose message.
-* You can choose proxies from a file (http or https)
-* You can choose nickname and avatar (N/A)
+* You can choose proxies from a file (http or (https N/A yet))
+* You can choose nickname and avatar (N/A yet)
 
 # Work in progress 
