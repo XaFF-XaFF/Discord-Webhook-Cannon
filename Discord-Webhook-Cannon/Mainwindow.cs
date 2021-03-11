@@ -75,25 +75,47 @@ namespace Discord_Webhook_Cannon
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "TXT Text|*.txt";
             ofd.ShowDialog();
-            textBox2.Text = ofd.FileName;
+            proxyTxt.Text = ofd.FileName;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void startBtn_Click(object sender, EventArgs e) //start
         {
-            string webhook = textBox1.Text;
-            string proxyList = textBox2.Text;
+            string webhook = webhookTxt.Text;
+            string proxyList = proxyTxt.Text;
             string threads = trackBar1.Value.ToString();
-            string message = messageTxtBox.Text;
+            string message = messageTxt.Text;
+            string avatarUrl = avatarTxt.Text;
+            string botName = botnameTxt.Text;
+            string time = timeTxt.Text;
 
-            if (string.IsNullOrEmpty(webhook) || string.IsNullOrEmpty(proxyList) || string.IsNullOrEmpty(message))
-            {
-                MessageBox.Show("Invalid options", "Error", MessageBoxButtons.OK);
+                if (string.IsNullOrEmpty(webhook) || string.IsNullOrEmpty(message))
+                {
+                    MessageBox.Show("Invalid options", "Error", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    Cannon cannon = new Cannon();
+                if (proxyChk.CheckState == CheckState.Checked)
+                {
+                    if (string.IsNullOrEmpty(proxyList))
+                    {
+                        MessageBox.Show("Invalid options", "Error", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        cannon.StartProxyThreads(webhook, proxyList, threads, message, avatarUrl, botName, time);
+                    }
+                }
+                else
+                {
+                    cannon.StartThreads(webhook, threads, message, avatarUrl, botName, time);
+                }
             }
-            else
-            {
-                Cannon cannon = new Cannon();
-                cannon.StartThreads(webhook, proxyList, threads, message);
-            }
+        }
+
+        private void stopBtn_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void AppExit_Click(object sender, EventArgs e)
