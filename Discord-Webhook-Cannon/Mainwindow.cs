@@ -95,22 +95,27 @@ namespace Discord_Webhook_Cannon
                 else
                 {
                     Cannon cannon = new Cannon();
-                if (proxyChk.CheckState == CheckState.Checked)
-                {
-                    if (string.IsNullOrEmpty(proxyList))
+                    if (proxyChk.CheckState == CheckState.Checked)
                     {
-                        MessageBox.Show("Invalid options", "Error", MessageBoxButtons.OK);
+                        if (string.IsNullOrEmpty(proxyList))
+                        {
+                            MessageBox.Show("Invalid options", "Error", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            cannon.StartProxyThreads(webhook, proxyList, threads, message, avatarUrl, botName, time);
+                        if (avatarChk.CheckState == CheckState.Checked)
+                            // replace
+                        if (botChk.CheckState == CheckState.Checked)
+                            //replace
+                                ;
+                        }
                     }
                     else
                     {
-                        cannon.StartProxyThreads(webhook, proxyList, threads, message, avatarUrl, botName, time);
+                        cannon.StartThreads(webhook, threads, message, avatarUrl, botName, time);
                     }
                 }
-                else
-                {
-                    cannon.StartThreads(webhook, threads, message, avatarUrl, botName, time);
-                }
-            }
         }
 
         private void stopBtn_Click(object sender, EventArgs e)

@@ -34,6 +34,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.timeTxt = new System.Windows.Forms.TextBox();
             this.stopBtn = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -61,8 +63,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.webhookTxt = new System.Windows.Forms.TextBox();
-            this.timeTxt = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
+            this.botChk = new System.Windows.Forms.CheckBox();
+            this.avatarChk = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -126,6 +128,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.avatarChk);
+            this.panel1.Controls.Add(this.botChk);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.timeTxt);
             this.panel1.Controls.Add(this.stopBtn);
@@ -167,6 +171,30 @@
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_MouseUp);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(113)))), ((int)(((byte)(189)))));
+            this.label19.Location = new System.Drawing.Point(52, 438);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(176, 18);
+            this.label19.TabIndex = 46;
+            this.label19.Text = "Message value [required]:";
+            // 
+            // timeTxt
+            // 
+            this.timeTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(42)))), ((int)(((byte)(48)))));
+            this.timeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.timeTxt.ForeColor = System.Drawing.Color.White;
+            this.timeTxt.Location = new System.Drawing.Point(66, 460);
+            this.timeTxt.Margin = new System.Windows.Forms.Padding(4);
+            this.timeTxt.Name = "timeTxt";
+            this.timeTxt.Size = new System.Drawing.Size(389, 22);
+            this.timeTxt.TabIndex = 45;
+            this.timeTxt.Text = "20";
             // 
             // stopBtn
             // 
@@ -480,28 +508,27 @@
             this.webhookTxt.Size = new System.Drawing.Size(389, 22);
             this.webhookTxt.TabIndex = 17;
             // 
-            // timeTxt
+            // botChk
             // 
-            this.timeTxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(42)))), ((int)(((byte)(48)))));
-            this.timeTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.timeTxt.ForeColor = System.Drawing.Color.White;
-            this.timeTxt.Location = new System.Drawing.Point(66, 460);
-            this.timeTxt.Margin = new System.Windows.Forms.Padding(4);
-            this.timeTxt.Name = "timeTxt";
-            this.timeTxt.Size = new System.Drawing.Size(389, 22);
-            this.timeTxt.TabIndex = 45;
+            this.botChk.AutoSize = true;
+            this.botChk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botChk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(113)))), ((int)(((byte)(189)))));
+            this.botChk.Location = new System.Drawing.Point(438, 392);
+            this.botChk.Name = "botChk";
+            this.botChk.Size = new System.Drawing.Size(14, 13);
+            this.botChk.TabIndex = 48;
+            this.botChk.UseVisualStyleBackColor = true;
             // 
-            // label19
+            // avatarChk
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(113)))), ((int)(((byte)(189)))));
-            this.label19.Location = new System.Drawing.Point(52, 438);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(111, 18);
-            this.label19.TabIndex = 46;
-            this.label19.Text = "Message value:";
+            this.avatarChk.AutoSize = true;
+            this.avatarChk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.avatarChk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(113)))), ((int)(((byte)(189)))));
+            this.avatarChk.Location = new System.Drawing.Point(438, 337);
+            this.avatarChk.Name = "avatarChk";
+            this.avatarChk.Size = new System.Drawing.Size(14, 13);
+            this.avatarChk.TabIndex = 49;
+            this.avatarChk.UseVisualStyleBackColor = true;
             // 
             // Mainwindow
             // 
@@ -560,6 +587,8 @@
         private System.Windows.Forms.Button stopBtn;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox timeTxt;
+        private System.Windows.Forms.CheckBox avatarChk;
+        private System.Windows.Forms.CheckBox botChk;
     }
 }
 

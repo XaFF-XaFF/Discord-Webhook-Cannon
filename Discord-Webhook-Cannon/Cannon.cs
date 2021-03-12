@@ -57,13 +57,18 @@ namespace Discord_Webhook_Cannon
 
                 try
                 {
-                    for (int j = 1; j <= Int32.Parse(time); j++)
+                    while (true)
                     {
-                        proxy1.Credentials = new NetworkCredential(proxyUsername, proxyPassword);
-                        dWebClient.Proxy = proxy1;
-                        dWebClient.UploadValues(webhook, discord);
-                        dWebClient.UploadValues(botName, discord);
-                        dWebClient.UploadValues(avatarUrl, discord);
+                        for (int j = 1; j <= Int32.Parse(time); j++)
+                        {
+                            Thread.Sleep(500);
+                            proxy1.Credentials = new NetworkCredential(proxyUsername, proxyPassword);
+                            dWebClient.Proxy = proxy1;
+                            dWebClient.UploadValues(webhook, discord);
+                            dWebClient.UploadValues(botName, discord);
+                            dWebClient.UploadValues(avatarUrl, discord);
+                        }
+                        Thread.Sleep(10000);
                     }
                 }
                 catch (Exception ex)
@@ -80,23 +85,17 @@ namespace Discord_Webhook_Cannon
 
             try
             {
+                while (true)
+                {
                     for (int j = 1; j <= Int32.Parse(time); j++)
                     {
-                        if (j == 20) // kinda gay but works, need to make it better XD
-                        {
-                            Thread.Sleep(10000);
-                            dWebClient.UploadValues(webhook, discord);
-                            dWebClient.UploadValues(botName, discord);
-                            dWebClient.UploadValues(avatarUrl, discord);
+                        Thread.Sleep(500);
+                        dWebClient.UploadValues(webhook, discord);
+                        //dWebClient.UploadValues(botName, discord);
+                        //dWebClient.UploadValues(avatarUrl, discord);
                     }
-                        else
-                        {
-                            dWebClient.UploadValues(webhook, discord);
-                            dWebClient.UploadValues(botName, discord);
-                            dWebClient.UploadValues(avatarUrl, discord);
-                            Thread.Sleep(500);
-                        }
-                    }        
+                    Thread.Sleep(10000);
+                }        
             }
             catch (Exception e)
             {
